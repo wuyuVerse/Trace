@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trace"
+version = "0.1.0"
+description = "TRACE — Recall-as-Execution: memory as an executable, typed, bitemporal ledger."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "TRACE Authors" }]
+keywords = [
+  "memory",
+  "agent-memory",
+  "recall-as-execution",
+  "bitemporal",
+  "ledger",
+  "RAG",
+  "LLM",
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# The core engine is deliberately stdlib-only — the LLM client uses urllib so
+# a fresh install works in restricted environments. Third-party pieces are
+# opt-in via extras below.
+dependencies = []
+
+[project.optional-dependencies]
+# Dense/hybrid relevance ranker (bge-m3 + sentence-transformers).
+dense = [
+  "numpy>=1.24",
+  "sentence-transformers>=2.5",
+]
+
+# Z3 bounded verification of the three theorems.
+theory = [
+  "z3-solver>=4.12",
+]
+
+# Everything at once.
+all = [
+  "numpy>=1.24",
+  "sentence-transformers>=2.5",
+  "z3-solver>=4.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/wuyuVerse/Trace"
+Source = "https://github.com/wuyuVerse/Trace"
+Issues = "https://github.com/wuyuVerse/Trace/issues"
+
+[tool.setuptools.packages.find]
+include = ["trace*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+trace = ["integrations/*.ts"]
