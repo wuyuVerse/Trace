@@ -108,9 +108,8 @@ python -m trace.theory.z3_bounded_verify   # Z3 bounded verification (requires z
 
 ## Paper
 
-The paradigm and experiments are described in the accompanying paper, "TRACE:
-Recall-as-Execution — Memory as an Executable Ledger" (ICLR 2027 submission;
-arXiv: **TBD**).
+The paradigm and experiments are described in the accompanying paper,
+*TRACE: Recall-as-Execution — Memory as an Executable Ledger* (preprint TBD).
 
 ## License
 

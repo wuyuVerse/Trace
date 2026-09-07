@@ -1,6 +1,6 @@
-"""跨 benchmark 验证：SRG 在 LongMemEval (ICLR 2025) 上，独立于 AutoMemoryBench。
+"""跨 benchmark 验证：TRACE on LongMemEval 上，独立于 AutoMemoryBench。
 
-目的：反驳“只是给 AutoMemoryBench 过拟合”。这里用**完全独立的第三方 benchmark**
+目的：反驳“only overfits AutoMemoryBench”。这里用**完全独立的第三方 benchmark**
 （LongMemEval oracle split）、**它自己的题型与答案**、以及一个**确定性的、可复现的
 判分代理**（不触碰 AutoMemoryBench 的 Scorer，也不需要 LLM judge key）。
 
@@ -148,9 +148,9 @@ def main():
             by_type_srg[qt][0] += 1
 
     print("=" * 74)
-    print("跨 benchmark 独立验证 — LongMemEval (ICLR 2025) oracle split")
+    print("跨 benchmark 独立验证 — LongMemEval oracle split")
     print("判分：确定性 span 命中代理（不触 AutoMemoryBench Scorer，一视同仁）")
-    print("对照：同一证据召回，唯一变量 = 定当前值方式（RAG 最相似 vs SRG 时间折叠）")
+    print("对照：同一证据召回，唯一变量 = 定当前值方式（RAG most-similar vs TRACE state-fold）")
     print("=" * 74)
     print(f"{'question_type':<28}{'RAG acc':>12}{'SRG acc':>12}{'Δ':>10}   n")
     print("-" * 74)
